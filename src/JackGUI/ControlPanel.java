@@ -1,11 +1,79 @@
 package JackGUI;
 
-/**
- * Created by IntelliJ IDEA.
- * User: Rune
- * Date: 14.03.11
- * Time: 14:20
- * To change this template use File | Settings | File Templates.
- */
-public class ControlPanel {
+import BTConn.ILegoCon;
+
+import javax.swing.*;
+import javax.swing.border.Border;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+
+public class ControlPanel extends JPanel implements ActionListener {
+
+    ILegoCon legoCon;
+    private static ControlPanel controlPanel;
+
+    public static ControlPanel getInstance() {
+        if (controlPanel == null) {
+            controlPanel = new ControlPanel();
+        }
+        return controlPanel;
+    }
+
+    private ControlPanel() {
+
+        this.legoCon = legoCon;
+        setSize(400, 400);
+        initPanel();
+    }
+
+    private void initPanel() {
+
+        setLayout(new BorderLayout());
+
+        JButton initButton = new JButton("Initialize Connections");
+        JButton dcButton = new JButton("Disconnect");
+        JPanel conPanel = addPanel("Connections..", initButton, dcButton);
+        add(conPanel, BorderLayout.NORTH);
+
+        JButton startButton = new JButton("Start");
+        JButton pauseButton = new JButton("Pause");
+        JPanel optionsPanel = addPanel("Options..", startButton, pauseButton);
+        add(optionsPanel, BorderLayout.SOUTH);
+
+
+
+
+
+
+    }
+
+    private JPanel addPanel(String header, JButton... buttons) {
+         JPanel panel = new JPanel(new GridLayout(1, 2));
+         Border border = BorderFactory.createTitledBorder(header);
+        panel.setBorder(border);
+        for(JButton b : buttons) {
+            panel.add(b);
+        }
+
+        return panel;
+
+    }
+
+        public static void main(String[] args){
+		JFrame myFrame = new JFrame();
+		ControlPanel command = new ControlPanel();
+		myFrame.getContentPane().add(command);
+		myFrame.setSize(400,400);
+
+		myFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		myFrame.setVisible(true);
+
+	}
+
+
+    public void actionPerformed(ActionEvent actionEvent) {
+        //To change body of implemented methods use File | Settings | File Templates.
+    }
 }
