@@ -32,10 +32,14 @@ public class ControlPanel extends JPanel implements ActionListener {
         JButton initButton = new JButton("Initialize Connections");
         JButton dcButton = new JButton("Disconnect");
         JPanel conPanel = addPanel("Connections..", initButton, dcButton);
+        dcButton.addActionListener(this);
+        initButton.addActionListener(this);
         add(conPanel, BorderLayout.NORTH);
 
         JButton startButton = new JButton("Start");
         JButton pauseButton = new JButton("Pause");
+        startButton.addActionListener(this);
+        pauseButton.addActionListener(this);
         JPanel optionsPanel = addPanel("Options..", startButton, pauseButton);
         add(optionsPanel, BorderLayout.SOUTH);
 
@@ -70,7 +74,10 @@ public class ControlPanel extends JPanel implements ActionListener {
 	}
 
 
-    public void actionPerformed(ActionEvent actionEvent) {
-        //To change body of implemented methods use File | Settings | File Templates.
+    public void actionPerformed(ActionEvent e) {
+        if (e.getActionCommand().equals("")) {
+
+
+        }
     }
 }

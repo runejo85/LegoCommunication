@@ -31,6 +31,7 @@ public class GUI extends JFrame {
         MapPanel mapPanel = MapPanel.getInstance();
         add(controlPanel, BorderLayout.WEST);
         add(mapPanel, BorderLayout.EAST);
+        setTitle("Map gather l33t v1.32");
 
 
         setLayout(new BorderLayout());

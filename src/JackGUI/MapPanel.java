@@ -19,15 +19,15 @@ public class MapPanel extends JPanel {
 
     private Map myMap;
 
-    public static MapPanel getInstance(Map map) {
+    public static MapPanel getInstance() {
         if (instance == null) {
-            instance = new MapPanel(map);
+            instance = new MapPanel();
         }
         return instance;
     }
 
-    private MapPanel(Map map){
-        myMap = map;
+    private MapPanel(){
+        myMap = Map.getInstance();
         setSize(new Dimension(400, 400));
         setBackground(Color.white);
         setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
