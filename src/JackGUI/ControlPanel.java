@@ -11,7 +11,6 @@ import java.awt.event.ActionListener;
 
 public class ControlPanel extends JPanel implements ActionListener {
 
-    ILegoCon legoCon;
     private static ControlPanel controlPanel;
 
     public static ControlPanel getInstance() {
@@ -22,8 +21,6 @@ public class ControlPanel extends JPanel implements ActionListener {
     }
 
     private ControlPanel() {
-
-        this.legoCon = legoCon;
         setSize(400, 400);
         initPanel();
     }
