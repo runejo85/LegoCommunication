@@ -14,7 +14,7 @@ import java.io.*;
  * Time: 1:48 PM
  * To change this template use File | Settings | File Templates.
  */
-public class LegoCon implements ILegoCon {
+public class LegoCon{
 
     private NXTCommand command;
     private final int protocol = NXTCommFactory.BLUETOOTH;
@@ -26,7 +26,7 @@ public class LegoCon implements ILegoCon {
     private DataInputStream dis;
 
 
-    public LegoCon(String name, String address) {
+    protected LegoCon(String name, String address) {
         checkConstructorVariables(name, address);
         establishConnection(name, address);
         dos = new DataOutputStream(nxtComm.getOutputStream());
@@ -57,7 +57,7 @@ public class LegoCon implements ILegoCon {
         }
     }
 
-    public int[] sendCommand(int cmd,int arg0,int arg1) {
+    protected int[] sendCommand(int cmd,int arg0,int arg1) {
 
         if (dos == null) {
             System.out.println("dos is null");
@@ -73,7 +73,7 @@ public class LegoCon implements ILegoCon {
         for (int i = 0; i < reply.length; i++) {
             try {
                 reply[i] = dis.readInt();
-                System.out.println(reply[i]);
+                //System.out.println(reply[i]);
             } catch (IOException ioe) {
                 break;
             }
@@ -82,7 +82,7 @@ public class LegoCon implements ILegoCon {
     }
 
     private void sendC(int[] command) {
-        System.out.println(command.length);
+        //System.out.println(command.length);
         for (int k : command) {
             try {
                 dos.writeInt(k);

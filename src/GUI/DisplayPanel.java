@@ -1,9 +1,11 @@
 package GUI;
 
+/*
 import MCL.Line;
 import MCL.MCLocalization;
 import MCL.Point;
 import MCL.Pose;
+*/
 
 import javax.swing.*;
 import java.awt.*;
@@ -12,9 +14,9 @@ import java.awt.*;
 public class DisplayPanel extends JPanel {
 
 
-    private Pose[] poseSet;
+    //private Pose[] poseSet;
     private Line[] boundaryLines;
-    MCLocalization mcl;
+    //MCLocalization mcl;
 
     private static DisplayPanel instance;
 
@@ -30,29 +32,41 @@ public class DisplayPanel extends JPanel {
         setBackground(Color.white);
         setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
         setBorder(BorderFactory.createLineBorder(Color.blue));
+
     }
 
     public void init(Point[] points) {
-        mcl = MCLocalization.getInstance();
-        mcl.init(points);
-        poseSet = mcl.resetDisplay();
-        boundaryLines = mcl.getLines();
+        //mcl = MCLocalization.getInstance();
+        //mcl.init(points);
+        //poseSet = mcl.resetDisplay();
+        //boundaryLines = mcl.getLines();
+        boundaryLines = new Line[points.length];
+
+         for (int i = 0; i < boundaryLines.length; i++) {
+           //boundaryLines[i] = new Line(points[i], points[(i + 1) % (points.length)]);
+            boundaryLines[i] = new Line(points[i], points[(i+1) % (points.length)]);
+        }
 
     }
 
 
     public void paintComponent(Graphics g) {
-        poseSet = mcl.getPoses();
+        //poseSet = mcl.getPoses();
         super.paintComponent(g);
         double SCALING = 1 / 5.0;
         g.setColor(Color.red);
+
+        /*
         for (Pose aPoseSet : poseSet) {
             if(aPoseSet.isValid()){
                 g.fillOval((int) (aPoseSet.getPoint().getX() * SCALING),
                         (int) (aPoseSet.getPoint().getY() * SCALING), 2, 2);
             }
         }
+        */
         g.setColor(Color.black);
+
+        //Pc = 0.5f
 
         for (Line boundaryLine : boundaryLines) {
             Point p1 = boundaryLine.getStartPoint();

@@ -10,5 +10,5 @@ import lejos.nxt.remote.NXTCommand;
  * To change this template use File | Settings | File Templates.
  */
 public interface ILegoCon {
-    public int[] sendCommand(int cmd, int arg0, int arg1);
+ //   public int[] sendCommand(int cmd, int arg0, int arg1);
 }

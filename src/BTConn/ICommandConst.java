@@ -9,15 +9,13 @@ package BTConn;
  */
 public interface ICommandConst {
 
-	public static final int BATTERY_VOLTAGE = 0;
-
-	public static final int PING = 1;
-
-	public static final int TRAVEL = 2;
-
-	public static final int TURN = 3;
-
-	public static final int DISCONNECT = 4;
+        final int COMMAND_BATTERY_VOLTAGE = 0;
+        final int COMMAND_TRAVEL = 1;
+        final int COMMAND_TURN = 2;
+        final int COMMAND_READ_COLOR = 3;
+        final int COMMAND_DISCONNECT = 4;
+        final int COMMAND_SWEEP = 5;
+        final int COMMAND_READ_VALUE = 6;
 
 }
 
