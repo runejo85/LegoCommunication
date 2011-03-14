@@ -12,10 +12,22 @@ import java.awt.*;
  */
 public class Map {
     private ArrayList<Line> lines = new ArrayList<Line>();
+    private static Map instance;
+
+    public static Map getInstance() {
+        if (instance == null) {
+            instance = new Map();
+        }
+        return instance;
+    }
 
 
-    public Map(){
+    private Map(){
 
+    }
+
+    public ArrayList<Line> getLines(){
+        return lines;
     }
 
     public void addLine(Line l){
