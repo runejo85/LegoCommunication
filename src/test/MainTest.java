@@ -26,7 +26,7 @@ public class MainTest {
         gg.add(a);
         gg.add(b);
         for(Line s : gg) {
-           s.serLineColor("BLUE");
+           s.setLineColor("BLUE");
         }
         for(Line s : gg) {
            System.out.println(s.getLineColor());

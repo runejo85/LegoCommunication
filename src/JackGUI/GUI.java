@@ -1,6 +1,7 @@
 package JackGUI;
 
 import javax.swing.*;
+import java.awt.*;
 
 /**
  * Created by IntelliJ IDEA.
@@ -21,13 +22,26 @@ public class GUI extends JFrame {
     }
 
     private GUI() {
-        setSize(1500, 900);
+        setSize(1500, 800);
         initGUI();
     }
 
     private void initGUI() {
         ControlPanel controlPanel = ControlPanel.getInstance();
+        MapPanel mapPanel = MapPanel.getInstance();
+        add(controlPanel, BorderLayout.WEST);
+        add(mapPanel, BorderLayout.EAST);
+
+
+        setLayout(new BorderLayout());
 
 
     }
+
+            public static void main(String[] args){
+		GUI myFrame = new GUI();
+		myFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		myFrame.setVisible(true);
+
+	}
 }
