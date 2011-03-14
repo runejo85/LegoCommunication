@@ -42,4 +42,8 @@ public class Line {
         return this.lineColor;
     }
 
+    public void lol() {
+        int a = 4;
+    }
+
 }
