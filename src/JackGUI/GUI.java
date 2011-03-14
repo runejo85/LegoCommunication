@@ -27,14 +27,15 @@ public class GUI extends JFrame {
     }
 
     private void initGUI() {
+        setLayout(new BorderLayout());
         ControlPanel controlPanel = ControlPanel.getInstance();
         MapPanel mapPanel = MapPanel.getInstance();
         add(controlPanel, BorderLayout.WEST);
-        add(mapPanel, BorderLayout.EAST);
+        add(mapPanel, BorderLayout.CENTER);
         setTitle("Map gather l33t v1.32");
 
 
-        setLayout(new BorderLayout());
+
 
 
     }

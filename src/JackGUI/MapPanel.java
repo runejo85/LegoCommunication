@@ -28,10 +28,10 @@ public class MapPanel extends JPanel {
 
     private MapPanel(){
         myMap = Map.getInstance();
-        setSize(new Dimension(400, 400));
         setBackground(Color.white);
         setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
         setBorder(BorderFactory.createLineBorder(Color.blue));
+        repaint();
     }
 
     public void init() {

@@ -21,7 +21,6 @@ public class ControlPanel extends JPanel implements ActionListener {
     }
 
     private ControlPanel() {
-        setSize(400, 400);
         initPanel();
     }
 
@@ -75,8 +74,8 @@ public class ControlPanel extends JPanel implements ActionListener {
 
 
     public void actionPerformed(ActionEvent e) {
-        if (e.getActionCommand().equals("")) {
-
+        if (e.getActionCommand().equals("Initialize Connections")) {
+            System.out.println("Initialize Connections");
 
         }
     }
