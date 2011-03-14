@@ -1,5 +1,8 @@
 package Beans;
 
+import java.util.ArrayList;
+import java.awt.*;
+
 /**
  * Created by IntelliJ IDEA.
  * User: Rune
@@ -8,7 +11,46 @@ package Beans;
  * To change this template use File | Settings | File Templates.
  */
 public class Map {
-    private Line[] lines;
+    private ArrayList<Line> lines = new ArrayList<Line>();
+
+
+    public Map(){
+
+    }
+
+    public void addLine(Line l){
+        lines.add(l);
+    }
+
+    public void removeLine(Line l){
+        lines.remove(l);
+    }
+
+    //get a line with start/end point
+    public Line getLine(Point start, Point end){
+        Line temp = null;
+
+        for(Line l : lines){
+            if(l.getStartPoint().equals(start) && l.getEndPoint().equals(end)){
+                return l;
+            }
+        }
+        return temp;
+    }
+
+    public boolean setLineColor(Point start, Point end, String color){
+          Line temp = getLine(start, end);
+          if(temp != null){
+              temp.setLineColor(color);
+              return true;
+          }
+          return false;
+    }
+
+
+
+
+
 
 
 }

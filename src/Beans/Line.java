@@ -34,7 +34,7 @@ public class Line {
 		return endPoint;
 	}
 
-    public void serLineColor(String color){
+    public void setLineColor(String color){
         this.lineColor = color;
     }
 

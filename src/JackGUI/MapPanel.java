@@ -3,6 +3,7 @@ package JackGUI;
 import Beans.Map;
 
 import javax.swing.*;
+import java.awt.*;
 
 /**
  * Created by IntelliJ IDEA.
@@ -22,6 +23,17 @@ public class MapPanel extends JPanel {
         }
         return instance;
     }
+
+    private MapPanel(){
+        setSize(new Dimension(400, 400));
+        setBackground(Color.white);
+        setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+        setBorder(BorderFactory.createLineBorder(Color.blue));
+
+    }
+
+
+
 
 
 
