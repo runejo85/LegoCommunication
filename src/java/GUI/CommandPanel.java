@@ -1,7 +1,7 @@
-//package GUI;
+//package java.GUI;
 //
-//import BTConn.ILegoCon;
-//import BTConn.LegoCon;
+//import java.BTConn.ILegoCon;
+//import java.BTConn.LegoCon;
 ////import MCL.MCLocalization;
 //
 //import javax.swing.*;

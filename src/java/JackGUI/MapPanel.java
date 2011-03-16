@@ -1,7 +1,7 @@
-package JackGUI;
+package java.JackGUI;
 
-import Beans.Line;
-import Beans.Map;
+import java.Beans.Line;
+import java.Beans.Map;
 
 import javax.swing.*;
 import java.awt.*;

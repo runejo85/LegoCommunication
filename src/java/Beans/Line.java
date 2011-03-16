@@ -1,4 +1,4 @@
-package Beans;
+package java.Beans;
 
 /**
  * Created by IntelliJ IDEA.

@@ -1,4 +1,4 @@
-package BTConn;
+package java.BTConn;
 
 import lejos.pc.comm.*;
 import lejos.nxt.remote.*;

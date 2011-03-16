@@ -1,4 +1,4 @@
-package BTConn;
+package java.BTConn;
 
 /**
  * Created by IntelliJ IDEA.

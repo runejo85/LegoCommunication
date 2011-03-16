@@ -1,6 +1,4 @@
-package BTConn;
-
-import lejos.nxt.remote.NXTCommand;
+package java.BTConn;
 
 /**
  * Created by IntelliJ IDEA.

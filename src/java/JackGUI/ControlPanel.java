@@ -1,6 +1,4 @@
-package JackGUI;
-
-import BTConn.ILegoCon;
+package java.JackGUI;
 
 import javax.swing.*;
 import javax.swing.border.Border;

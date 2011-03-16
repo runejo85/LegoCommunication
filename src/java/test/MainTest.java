@@ -1,16 +1,16 @@
-package test;
+package java.test;
 
-import Beans.Line;
+import java.Beans.Line;
 
 import java.awt.*;
 import java.util.ArrayList;
 
 //
-//import BTConn.ExplorerCom;
-//import BTConn.ILegoCon;
-//import BTConn.LegoCon;
-//import GUI.CommandPanel;
-//import GUI.DisplayPanel;
+//import java.BTConn.ExplorerCom;
+//import java.BTConn.ILegoCon;
+//import java.BTConn.LegoCon;
+//import java.GUI.CommandPanel;
+//import java.GUI.DisplayPanel;
 //
 //import javax.swing.*;
 //import java.awt.*;
