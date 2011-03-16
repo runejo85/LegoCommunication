@@ -21,12 +21,12 @@ public class MainTest {
 //
     public static void main(String[] args) {
         ArrayList<Line> gg = new ArrayList<Line>();
-        Line a = new Line(new Point(1,1), new Point(2,2), "Black");
-        Line b = new Line(new Point(1,1), new Point(2,2), "Red");
+        Line a = new Line(new Point(1,1), new Point(2,2), Color.black);
+        Line b = new Line(new Point(1,1), new Point(2,2), Color.blue);
         gg.add(a);
         gg.add(b);
         for(Line s : gg) {
-           s.setLineColor("BLUE");
+           s.setLineColor(Color.blue);
         }
         for(Line s : gg) {
            System.out.println(s.getLineColor());

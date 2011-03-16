@@ -16,7 +16,8 @@ import java.util.ArrayList;
  */
 public class MapPanel extends JPanel {
     private static MapPanel instance;
-
+    private final int xConst = 600;
+    private final int yConst = 400;
     private Map myMap;
 
     public static MapPanel getInstance() {
@@ -42,18 +43,27 @@ public class MapPanel extends JPanel {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         ArrayList<Line> tempLines = myMap.getLines();
-        double SCALING = 1; //1 / 5.0;
+        double SCALING =  100;//1 / 5.0;
+
+        //g.translate(600,400);
 
         for (Line mapLine : tempLines) {
             Point p1 = mapLine.getStartPoint();
             Point p2 = mapLine.getEndPoint();
-            g.drawLine((int) (p1.getX() * SCALING),
-                    (int) (p1.getY() * SCALING),
-                    (int) (p2.getX() * SCALING), (int) (p2.getY() * SCALING));
+            Point m;
+            g.setColor(Color.black);
+            g.drawLine((int) (p1.getX() * SCALING) + xConst,
+                    (int) (p1.getY() * SCALING) + yConst,
+                    (int) (p2.getX() * SCALING) + xConst, (int) (p2.getY() * SCALING) +yConst);
+            m = new Point((int)(p1.getX() * SCALING + p2.getX() * SCALING)/ 2,(int) (p1.getY() * SCALING + p2.getY() * SCALING) / 2) ;
+            g.setColor(mapLine.getLineColor());
+            g.fillOval((int)(m.getX() ) + xConst - 3, (int)(m.getY()) + yConst - 3, 6,6);
         }
 
 
     }
+
+
 
 
 

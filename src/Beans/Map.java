@@ -50,7 +50,7 @@ public class Map {
         return temp;
     }
 
-    public boolean setLineColor(Point start, Point end, String color){
+    public boolean setLineColor(Point start, Point end, Color color){
           Line temp = getLine(start, end);
           if(temp != null){
               temp.setLineColor(color);

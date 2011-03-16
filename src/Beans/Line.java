@@ -18,9 +18,9 @@ import java.awt.*;
 public class Line {
 	private Point startPoint;
 	private Point endPoint;
-    private String lineColor;
+    private Color lineColor;
 
-	public Line(Point startPoint, Point endPoint, String lColor){
+	public Line(Point startPoint, Point endPoint, Color lColor){
 		this.startPoint = startPoint;
         this.endPoint = endPoint;
         this.lineColor = lColor;
@@ -34,11 +34,11 @@ public class Line {
 		return endPoint;
 	}
 
-    public void setLineColor(String color){
+    public void setLineColor(Color color){
         this.lineColor = color;
     }
 
-    public String getLineColor(){
+    public Color getLineColor(){
         return this.lineColor;
     }
 
