@@ -43,14 +43,14 @@ public class GUI extends JFrame {
     public static void main(String[] args) {
 
         Map map = Map.getInstance();
-        map.addLine(new Line(new Point(100, 100), new Point(101, 100), "yellow"));
-        map.addLine(new Line(new Point(100, 100), new Point(100, 101), "yellow"));
-        map.addLine(new Line(new Point(101, 100), new Point(101, 101), "yellow"));
-        map.addLine(new Line(new Point(100, 101), new Point(101, 101), "yellow"));
-        map.addLine(new Line(new Point(100, 100), new Point(100, 99), "yellow"));
-        map.addLine(new Line(new Point(100, 100), new Point(99, 100), "yellow"));
-        map.addLine(new Line(new Point(100, 99), new Point(100, 100), "yellow"));
-        map.addLine(new Line(new Point(99, 100), new Point(100, 100), "yellow"));
+        map.addLine(new Line(new Point(0, 0), new Point(1, 0), "yellow"));
+        map.addLine(new Line(new Point(0, 0), new Point(0, 1), "yellow"));
+        map.addLine(new Line(new Point(1, 0), new Point(1, 1), "yellow"));
+        map.addLine(new Line(new Point(0, 1), new Point(1, 1), "yellow"));
+        map.addLine(new Line(new Point(0, 0), new Point(0, 1), "yellow"));
+        map.addLine(new Line(new Point(0, 0), new Point(0, 1), "yellow"));
+        map.addLine(new Line(new Point(0, -1), new Point(1, 1), "yellow"));
+        map.addLine(new Line(new Point(-1, 0), new Point(1, 1), "yellow"));
         GUI myFrame = new GUI();
         myFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         myFrame.setVisible(true);
