@@ -1,5 +1,8 @@
 package JackGUI;
 
+import Beans.Map;
+import Beans.Line;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -35,15 +38,22 @@ public class GUI extends JFrame {
         setTitle("Map gather l33t v1.32");
 
 
-
-
-
     }
 
-            public static void main(String[] args){
-		GUI myFrame = new GUI();
-		myFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		myFrame.setVisible(true);
+    public static void main(String[] args) {
 
-	}
+        Map map = Map.getInstance();
+        map.addLine(new Line(new Point(100, 100), new Point(101, 100), "yellow"));
+        map.addLine(new Line(new Point(100, 100), new Point(100, 101), "yellow"));
+        map.addLine(new Line(new Point(101, 100), new Point(101, 101), "yellow"));
+        map.addLine(new Line(new Point(100, 101), new Point(101, 101), "yellow"));
+        map.addLine(new Line(new Point(100, 100), new Point(100, 99), "yellow"));
+        map.addLine(new Line(new Point(100, 100), new Point(99, 100), "yellow"));
+        map.addLine(new Line(new Point(100, 99), new Point(100, 100), "yellow"));
+        map.addLine(new Line(new Point(99, 100), new Point(100, 100), "yellow"));
+        GUI myFrame = new GUI();
+        myFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        myFrame.setVisible(true);
+
+    }
 }
