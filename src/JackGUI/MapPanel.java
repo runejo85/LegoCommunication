@@ -40,9 +40,17 @@ public class MapPanel extends JPanel {
     }
 
     public void paintComponent(Graphics g) {
-          super.paintComponent(g);
-          ArrayList<Line> tempLines = myMap.getLines();
+        super.paintComponent(g);
+        ArrayList<Line> tempLines = myMap.getLines();
+        double SCALING = 1; //1 / 5.0;
 
+        for (Line mapLine : tempLines) {
+            Point p1 = mapLine.getStartPoint();
+            Point p2 = mapLine.getEndPoint();
+            g.drawLine((int) (p1.getX() * SCALING),
+                    (int) (p1.getY() * SCALING),
+                    (int) (p2.getX() * SCALING), (int) (p2.getY() * SCALING));
+        }
 
 
     }
