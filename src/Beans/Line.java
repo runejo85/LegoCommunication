@@ -20,6 +20,8 @@ public class Line {
 	private Point endPoint;
     private Color lineColor;
 
+    private int lol;
+
 	public Line(Point startPoint, Point endPoint, Color lColor){
 		this.startPoint = startPoint;
         this.endPoint = endPoint;
