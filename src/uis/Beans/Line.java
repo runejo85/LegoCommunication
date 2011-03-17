@@ -1,26 +1,12 @@
-package java.Beans;
+package uis.Beans;
 
-/**
- * Created by IntelliJ IDEA.
- * User: Rune
- * Date: 14.03.11
- * Time: 14:25
- * To change this template use File | Settings | File Templates.
- */
-import java.awt.*;
+import java.awt.Color;
 
-/**
- * Created by IntelliJ IDEA.
- * User: eirik
- * Date: 1/25/11
- * Time: 3:34 PM
- */
+
 public class Line {
 	private Point startPoint;
 	private Point endPoint;
     private Color lineColor;
-
-    private int lol;
 
 	public Line(Point startPoint, Point endPoint, Color lColor){
 		this.startPoint = startPoint;

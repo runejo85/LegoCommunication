@@ -1,10 +1,11 @@
-package java.JackGUI;
+package uis.JackGUI;
 
-import java.Beans.Line;
-import java.Beans.Map;
+import uis.Beans.*;
 
 import javax.swing.*;
-import java.awt.*;
+import java.awt.Color;
+import java.awt.FlowLayout;
+import java.awt.Graphics;
 import java.util.ArrayList;
 
 /**

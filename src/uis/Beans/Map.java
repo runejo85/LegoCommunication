@@ -1,15 +1,10 @@
-package java.Beans;
+package uis.Beans;
 
 import java.util.ArrayList;
-import java.awt.*;
+import java.awt.Color;
 
-/**
- * Created by IntelliJ IDEA.
- * User: Rune
- * Date: 14.03.11
- * Time: 14:25
- * To change this template use File | Settings | File Templates.
- */
+
+
 public class Map {
     private ArrayList<Line> lines = new ArrayList<Line>();
     private static Map instance;
@@ -19,6 +14,7 @@ public class Map {
             instance = new Map();
         }
         return instance;
+
     }
 
 
@@ -32,6 +28,7 @@ public class Map {
 
     public void addLine(Line l){
         lines.add(l);
+
     }
 
     public void removeLine(Line l){

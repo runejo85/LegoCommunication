@@ -1,37 +1,33 @@
-package java.JackGUI;
+package uis.JackGUI;
 
-import java.Beans.Map;
-import java.Beans.Line;
+import uis.Beans.*;
+import uis.Beans.Point;
 
 import javax.swing.*;
-import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.Color;
 
-/**
- * Created by IntelliJ IDEA.
- * User: Rune
- * Date: 14.03.11
- * Time: 14:19
- * To change this template use File | Settings | File Templates.
- */
+
 public class GUI extends JFrame {
 
     private static GUI GUI;
 
-    public static GUI getInstance() {
+
+    public static GUI getInstance(RobotControl explorerCtrl) {
         if (GUI == null) {
-            GUI = new GUI();
+            GUI = new GUI(explorerCtrl);
         }
         return GUI;
     }
 
-    private GUI() {
+    private GUI(RobotControl explorerCtrl) {
         setSize(1500, 800);
-        initGUI();
+        initGUI(explorerCtrl);
     }
 
-    private void initGUI() {
+    private void initGUI(RobotControl explorerCtrl) {
         setLayout(new BorderLayout());
-        ControlPanel controlPanel = ControlPanel.getInstance();
+        ControlPanel controlPanel = ControlPanel.getInstance(explorerCtrl);
         MapPanel mapPanel = MapPanel.getInstance();
         add(controlPanel, BorderLayout.WEST);
         add(mapPanel, BorderLayout.CENTER);
@@ -51,7 +47,7 @@ public class GUI extends JFrame {
         map.addLine(new Line(new Point(-1, 0), new Point(-1, -1), Color.yellow));
         map.addLine(new Line(new Point(-1, -1), new Point(0, -1), Color.blue));
         map.addLine(new Line(new Point(0, -1), new Point(0,0), Color.green));
-        GUI myFrame = new GUI();
+        GUI myFrame = new GUI(null);
         myFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         myFrame.setVisible(true);
 

@@ -1,4 +1,4 @@
-package java.BTConn;
+package uis.lego;
 
 import lejos.pc.comm.*;
 import lejos.nxt.remote.*;

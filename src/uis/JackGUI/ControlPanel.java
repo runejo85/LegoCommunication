@@ -1,4 +1,4 @@
-package java.JackGUI;
+package uis.JackGUI;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -10,15 +10,19 @@ import java.awt.event.ActionListener;
 public class ControlPanel extends JPanel implements ActionListener {
 
     private static ControlPanel controlPanel;
+    private RobotControl explorerCtrl;
 
-    public static ControlPanel getInstance() {
+    public static ControlPanel getInstance(RobotControl explorerCtrl) {
         if (controlPanel == null) {
-            controlPanel = new ControlPanel();
+            controlPanel = new ControlPanel(explorerCtrl);
         }
         return controlPanel;
     }
 
-    private ControlPanel() {
+    private ControlPanel(RobotControl explorerCtrl) {
+        if (explorerCtrl != null) {
+            this.explorerCtrl = explorerCtrl;
+        }
         initPanel();
     }
 
@@ -61,7 +65,7 @@ public class ControlPanel extends JPanel implements ActionListener {
 
         public static void main(String[] args){
 		JFrame myFrame = new JFrame();
-		ControlPanel command = new ControlPanel();
+		ControlPanel command = new ControlPanel(null);
 		myFrame.getContentPane().add(command);
 		myFrame.setSize(400,400);
 
@@ -73,9 +77,11 @@ public class ControlPanel extends JPanel implements ActionListener {
 
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equals("Initialize Connections")) {
+            explorerCtrl.btConnect();
             System.out.println("Initialize Connections");
         }
         else if (e.getActionCommand().equals("Disconnect")) {
+            explorerCtrl.btDisconnect();
             System.out.println("Disconnect");
         }
         else if (e.getActionCommand().equals("Start")) {

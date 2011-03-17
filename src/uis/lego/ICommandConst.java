@@ -1,4 +1,4 @@
-package java.BTConn;
+package uis.lego;
 
 /**
  * Created by IntelliJ IDEA.
