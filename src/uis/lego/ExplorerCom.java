@@ -1,12 +1,5 @@
 package uis.lego;
 
-/**
- * Created by IntelliJ IDEA.
- * User: Rune
- * Date: 01.03.11
- * Time: 16:00
- * To change this template use File | Settings | File Templates.
- */
 public class ExplorerCom extends LegoCon implements ICommandConst, ILegoCon {
 
     public ExplorerCom(String name, String adress){
@@ -35,6 +28,17 @@ public class ExplorerCom extends LegoCon implements ICommandConst, ILegoCon {
             }
         }
 
+        return res;
+    }
+
+    public boolean disconnect() {
+        boolean res = true;
+        int ret[] = sendCommand(COMMAND_DISCONNECT,0,0);
+        for(int a : ret) {
+            if(a != 255) {
+                res = false;
+            }
+        }
         return res;
     }
 
