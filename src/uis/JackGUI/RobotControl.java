@@ -13,8 +13,8 @@ public interface RobotControl {
 
     public void btDisconnect();
 
-    public void explore();
+    public void start();
 
-
+    public void pause();
 
 }

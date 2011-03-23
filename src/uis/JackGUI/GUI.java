@@ -13,21 +13,21 @@ public class GUI extends JFrame {
     private static GUI GUI;
 
 
-    public static GUI getInstance(RobotControl explorerCtrl) {
+    public static GUI getInstance(RobotControl rc) {
         if (GUI == null) {
-            GUI = new GUI(explorerCtrl);
+            GUI = new GUI(rc);
         }
         return GUI;
     }
 
-    private GUI(RobotControl explorerCtrl) {
+    private GUI(RobotControl rc) {
         setSize(1500, 800);
-        initGUI(explorerCtrl);
+        initGUI(rc);
     }
 
-    private void initGUI(RobotControl explorerCtrl) {
+    private void initGUI(RobotControl rc) {
         setLayout(new BorderLayout());
-        ControlPanel controlPanel = ControlPanel.getInstance(explorerCtrl);
+        ControlPanel controlPanel = ControlPanel.getInstance(rc);
         MapPanel mapPanel = MapPanel.getInstance();
         add(controlPanel, BorderLayout.WEST);
         add(mapPanel, BorderLayout.CENTER);
@@ -50,6 +50,8 @@ public class GUI extends JFrame {
         GUI myFrame = new GUI(null);
         myFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         myFrame.setVisible(true);
+        map.addLine(new Line(new Point(3, 3), new Point(3, 4), Color.blue));
+
 
     }
 }
