@@ -86,7 +86,7 @@ public class ControlPanel extends JPanel implements ActionListener {
         }
         else if (e.getActionCommand().equals("Start")) {
             System.out.println("Start");
-            explorerCtrl.explore();
+            explorerCtrl.start ();
         }
         else if (e.getActionCommand().equals("Pause")) {
             System.out.println("Pause");

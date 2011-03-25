@@ -1,5 +1,7 @@
 package uis.lego;
 
+import uis.Beans.Point;
+
 /**
  * Created by IntelliJ IDEA.
  * User: eirik
@@ -8,20 +10,54 @@ package uis.lego;
  * To change this template use File | Settings | File Templates.
  */
 public class FExplorerCom {
+    Point currentPos;
+    int heading = 0;
+    FMap fMap;
+
+
 
     public FExplorerCom(String name, String adress){
-
+        currentPos = new Point(0,0);
+        fMap = FMap.getInstance();
     }
 
-    public int[] sweep(){
-        return null;
+    public int[] sweep(int h){
+        int hlp;
+        switch(heading) {
+            case 0: hlp = 4; break;
+            case 1: hlp = 3; break;
+            case 2: hlp = 2; break;
+            case 3: hlp = 1; break;
+            default: hlp = 1;
+        }
+
+
+        int[] result = new int[4];
+        if(fMap.containsLine(currentPos, new Point(currentPos.getX(), currentPos.getY()+1))) {
+            result[hlp % 4] = 1;
+        }
+        if(fMap.containsLine(currentPos, new Point(currentPos.getX()+1, currentPos.getY()))) {
+            result[1 + hlp % 4] = 1;
+        }
+        if(fMap.containsLine(currentPos, new Point(currentPos.getX(), currentPos.getY()-1))) {
+            result[2 + hlp % 4] = 1;
+        }
+        if(fMap.containsLine(currentPos, new Point(currentPos.getX()-1, currentPos.getY()))) {
+            result[3 + hlp % 4] = 1;
+        }
+
+
+        return result;
     }
 
     public String travel(int dist, boolean checkColor){
-        return null;
+        if(checkColor) return "yellow";
+        else return "black";
      }
 
     public boolean turn(int degrees){
+
+            heading = (heading + (degrees / 90)) % 4;
         return false;
     }
 
