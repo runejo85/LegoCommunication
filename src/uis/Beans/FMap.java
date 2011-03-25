@@ -1,4 +1,4 @@
-package uis.lego;
+package uis.Beans;
 
 /**
  * Created by IntelliJ IDEA.
@@ -7,15 +7,13 @@ package uis.lego;
  * Time: 2:37 PM
  * To change this template use File | Settings | File Templates.
  */
-import uis.Beans.Line;
-import uis.Beans.Point;
 
 import java.util.ArrayList;
 import java.awt.Color;
 
 
 
-public class FMap {
+public class FMap implements IMap {
     private ArrayList<Line> lines = new ArrayList<Line>();
     private static FMap instance;
 

@@ -5,7 +5,7 @@ import java.awt.Color;
 
 
 
-public class Map {
+public class Map implements IMap {
     private ArrayList<Line> lines = new ArrayList<Line>();
     private static Map instance;
 
@@ -45,6 +45,10 @@ public class Map {
             }
         }
         return temp;
+    }
+
+    public boolean containsLine(Point start, Point end) {
+        return false;
     }
 
     public boolean setLineColor(Point start, Point end, Color color){

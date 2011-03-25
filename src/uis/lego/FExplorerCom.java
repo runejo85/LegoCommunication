@@ -1,5 +1,7 @@
 package uis.lego;
 
+import uis.Beans.FMap;
+import uis.Beans.IMap;
 import uis.Beans.Point;
 
 /**
@@ -9,10 +11,10 @@ import uis.Beans.Point;
  * Time: 2:34 PM
  * To change this template use File | Settings | File Templates.
  */
-public class FExplorerCom {
+public class FExplorerCom implements IExplorerCom{
     Point currentPos;
     int heading = 0;
-    FMap fMap;
+    IMap fMap;
 
 
 
@@ -21,7 +23,7 @@ public class FExplorerCom {
         fMap = FMap.getInstance();
     }
 
-    public int[] sweep(int h){
+    public int[] sweep(){
         int hlp;
         switch(heading) {
             case 0: hlp = 4; break;

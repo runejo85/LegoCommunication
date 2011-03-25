@@ -1,6 +1,6 @@
 package uis.lego;
 
-public class ExplorerCom extends LegoCon implements ICommandConst, ILegoCon {
+public class ExplorerCom extends LegoCon implements ICommandConst, ILegoCon, IExplorerCom {
 
     public ExplorerCom(String name, String adress){
         super(name, adress);
