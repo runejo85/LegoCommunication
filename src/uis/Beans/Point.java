@@ -53,7 +53,7 @@ public class Point implements Serializable {
     }
 
     public Point reverse() {
-        return new Point(-x,-y);
+        return new Point(x,-y);
     }
 
     public String toString() {
