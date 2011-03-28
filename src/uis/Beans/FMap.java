@@ -92,7 +92,11 @@ public class FMap implements IMap {
             if(l.getStartPoint().equals(start) && l.getEndPoint().equals(end)){
                 return true;
             }
+            else if (l.getStartPoint().equals(end) && l.getEndPoint().equals(start)) {
+                return true;
+            }
         }
+
         return false;
     }
 

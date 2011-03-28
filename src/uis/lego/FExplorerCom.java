@@ -36,16 +36,17 @@ public class FExplorerCom implements IExplorerCom{
 
         int[] result = new int[4];
         if(fMap.containsLine(currentPos, new Point(currentPos.getX(), currentPos.getY()+1))) {
-            result[hlp % 4] = 1;
+            result[(hlp) % 4] = 1;
         }
         if(fMap.containsLine(currentPos, new Point(currentPos.getX()+1, currentPos.getY()))) {
-            result[1 + hlp % 4] = 1;
+
+            result[(1 + hlp) % 4] = 1;
         }
         if(fMap.containsLine(currentPos, new Point(currentPos.getX(), currentPos.getY()-1))) {
-            result[2 + hlp % 4] = 1;
+            result[(2 + hlp) % 4] = 1;
         }
         if(fMap.containsLine(currentPos, new Point(currentPos.getX()-1, currentPos.getY()))) {
-            result[3 + hlp % 4] = 1;
+            result[(3 + hlp) % 4] = 1;
         }
 
 
@@ -76,9 +77,20 @@ public class FExplorerCom implements IExplorerCom{
 
      }
 
+    public String getPos() {
+        return ("X: " + currentPos.getX() + " Y: " + currentPos.getY());
+    }
+
     public static void main(String[] args) {
-        IExplorerCom gg = new FExplorerCom("gg", "gg");
+        FExplorerCom gg = new FExplorerCom("gg", "gg");
         int[] res = gg.sweep();
+        for (int a  : res) {
+            System.out.println(a);
+        }
+        gg.turn(90);
+        gg.travel(50, true);
+        System.out.println(gg.getPos());
+        res = gg.sweep();
         for (int a  : res) {
             System.out.println(a);
         }
