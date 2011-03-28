@@ -38,6 +38,12 @@ public class GUI extends JFrame {
 
     }
 
+    public boolean addLine(Line line) {
+        map.addLine(line);
+        repaint();
+        return true;
+    }
+
     public IMap getMap() {
         return map;
     }
@@ -47,40 +53,40 @@ public class GUI extends JFrame {
     public static void main(String[] args) {
 
         GUI gui = new GUI(null);
-        gui.map.addLine(new Line(new Point(0,0), new Point(1,0), Color.black));
-        gui.map.addLine(new Line(new Point(0,0), new Point(0,1), Color.black));
+        gui.addLine(new Line(new Point(0,0), new Point(1,0), Color.black));
+        gui.addLine(new Line(new Point(0,0), new Point(0,1), Color.black));
 
-        gui.map.addLine(new Line(new Point(1,0), new Point(1,1), Color.black));
-        gui.map.addLine(new Line(new Point(1,0), new Point(2,0), Color.black));
+        gui.addLine(new Line(new Point(1,0), new Point(1,1), Color.black));
+        gui.addLine(new Line(new Point(1,0), new Point(2,0), Color.black));
 
-        gui.map.addLine(new Line(new Point(2,0), new Point(2,1), Color.black));
+        gui.addLine(new Line(new Point(2,0), new Point(2,1), Color.black));
 
-        gui.map.addLine(new Line(new Point(0,1), new Point(1,1), Color.black));
-        gui.map.addLine(new Line(new Point(0,1), new Point(0,2), Color.black));
+        gui.addLine(new Line(new Point(0,1), new Point(1,1), Color.black));
+        gui.addLine(new Line(new Point(0,1), new Point(0,2), Color.black));
 
-        gui.map.addLine(new Line(new Point(1,1), new Point(1,2), Color.black));
-        gui.map.addLine(new Line(new Point(1,1), new Point(2,1), Color.black));
+        gui.addLine(new Line(new Point(1,1), new Point(1,2), Color.black));
+        gui.addLine(new Line(new Point(1,1), new Point(2,1), Color.black));
 
-        gui.map.addLine(new Line(new Point(2,1), new Point(2,2), Color.black));
+        gui.addLine(new Line(new Point(2,1), new Point(2,2), Color.black));
 
-        gui.map.addLine(new Line(new Point(0,2), new Point(1,2), Color.black));
-        gui.map.addLine(new Line(new Point(0,2), new Point(0,3), Color.black));
+        gui.addLine(new Line(new Point(0,2), new Point(1,2), Color.black));
+        gui.addLine(new Line(new Point(0,2), new Point(0,3), Color.black));
 
-        gui.map.addLine(new Line(new Point(1,2), new Point(2,2), Color.black));
-        gui.map.addLine(new Line(new Point(1,2), new Point(1,3), Color.black));
+        gui.addLine(new Line(new Point(1,2), new Point(2,2), Color.black));
+        gui.addLine(new Line(new Point(1,2), new Point(1,3), Color.black));
 
-        gui.map.addLine(new Line(new Point(2,2), new Point(2,3), Color.black));
+        gui.addLine(new Line(new Point(2,2), new Point(2,3), Color.black));
 
-        gui.map.addLine(new Line(new Point(0,3), new Point(0,4), Color.black));
-        gui.map.addLine(new Line(new Point(0,3), new Point(1,3), Color.black));
+        gui.addLine(new Line(new Point(0,3), new Point(0,4), Color.black));
+        gui.addLine(new Line(new Point(0,3), new Point(1,3), Color.black));
 
-        gui.map.addLine(new Line(new Point(1,3), new Point(1,4), Color.black));
-        gui.map.addLine(new Line(new Point(1,3), new Point(2,3), Color.black));
+        gui.addLine(new Line(new Point(1,3), new Point(1,4), Color.black));
+        gui.addLine(new Line(new Point(1,3), new Point(2,3), Color.black));
 
-        gui.map.addLine(new Line(new Point(2,3), new Point(2,4), Color.black));
+        gui.addLine(new Line(new Point(2,3), new Point(2,4), Color.black));
 
-        gui.map.addLine(new Line(new Point(0,4), new Point(1,4), Color.black));
-        gui.map.addLine(new Line(new Point(1,4), new Point(2,4), Color.black));
+        gui.addLine(new Line(new Point(0,4), new Point(1,4), Color.black));
+        gui.addLine(new Line(new Point(1,4), new Point(2,4), Color.black));
 
         gui.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         gui.setVisible(true);
