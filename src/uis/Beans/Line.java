@@ -30,8 +30,8 @@ public class Line {
         return this.lineColor;
     }
 
-    public void lol() {
-        int a = 4;
+    public String toString() {
+        return ("sP = " + startPoint + ", eP = " + endPoint + ", Color = " + lineColor.toString());
     }
 
 }
