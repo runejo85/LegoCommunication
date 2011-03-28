@@ -1,5 +1,7 @@
 package uis.Beans;
 
+import java.io.Serializable;
+
 /**
  * Created by IntelliJ IDEA.
  * User: Rune
@@ -7,7 +9,7 @@ package uis.Beans;
  * Time: 12:37
  * To change this template use File | Settings | File Templates.
  */
-public class Point {
+public class Point implements Serializable {
     private int x,y;
 
     public Point(int x, int y){
