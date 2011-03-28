@@ -2,7 +2,12 @@ package uis.lego;
 
 import uis.Beans.FMap;
 import uis.Beans.IMap;
+import uis.Beans.Line;
 import uis.Beans.Point;
+import uis.JackGUI.GUI;
+
+import javax.swing.*;
+import java.awt.*;
 
 /**
  * Created by IntelliJ IDEA.
@@ -80,21 +85,6 @@ public class FExplorerCom implements IExplorerCom{
     public String getPos() {
         return ("X: " + currentPos.getX() + " Y: " + currentPos.getY());
     }
-
-    public static void main(String[] args) {
-        FExplorerCom gg = new FExplorerCom("gg", "gg");
-        int[] res = gg.sweep();
-        for (int a  : res) {
-            System.out.println(a);
-        }
-        gg.turn(90);
-        gg.travel(50, true);
-        System.out.println(gg.getPos());
-        res = gg.sweep();
-        for (int a  : res) {
-            System.out.println(a);
-        }
-
-    }
-
 }
+
+

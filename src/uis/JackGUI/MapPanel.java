@@ -18,7 +18,7 @@ import java.util.ArrayList;
 public class MapPanel extends JPanel {
     private static MapPanel instance;
     private final int xConst = 600;
-    private final int yConst = 400;
+    private final int yConst = 600;
     private Map myMap;
 
     public static MapPanel getInstance() {
@@ -49,8 +49,9 @@ public class MapPanel extends JPanel {
         //g.translate(600,400);
 
         for (Line mapLine : tempLines) {
-            Point p1 = mapLine.getStartPoint();
-            Point p2 = mapLine.getEndPoint();
+            Point p1 = mapLine.getStartPoint().reverse();
+            Point p2 = mapLine.getEndPoint().reverse();
+
             Point m;
             g.setColor(Color.black);
             g.drawLine((int) (p1.getX() * SCALING) + xConst,
