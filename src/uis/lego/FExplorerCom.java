@@ -53,6 +53,14 @@ public class FExplorerCom implements IExplorerCom{
     }
 
     public String travel(int dist, boolean checkColor){
+
+        switch (heading) {
+            case 0: currentPos = new Point(currentPos.getX(), currentPos.getY()+1); break;
+            case 1: currentPos = new Point(currentPos.getX()+1, currentPos.getY()); break;
+            case 2: currentPos = new Point(currentPos.getX(), currentPos.getY()-1); break;
+            case 3: currentPos = new Point(currentPos.getX()-1, currentPos.getY()); break;
+            default:System.out.println("FUUCKED IN TRAVLE");
+        }
         if(checkColor) return "yellow";
         else return "black";
      }
@@ -67,5 +75,14 @@ public class FExplorerCom implements IExplorerCom{
         return true;
 
      }
+
+    public static void main(String[] args) {
+        IExplorerCom gg = new FExplorerCom("gg", "gg");
+        int[] res = gg.sweep();
+        for (int a  : res) {
+            System.out.println(a);
+        }
+
+    }
 
 }
