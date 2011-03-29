@@ -43,6 +43,9 @@ public class Map implements IMap {
             if(l.getStartPoint().equals(start) && l.getEndPoint().equals(end)){
                 return l;
             }
+            else if (l.getStartPoint().equals(end) && l.getEndPoint().equals(start)) {
+                return l;
+            }
         }
         return temp;
     }

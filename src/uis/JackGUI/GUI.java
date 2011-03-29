@@ -38,6 +38,10 @@ public class GUI extends JFrame {
 
     }
 
+    public boolean setLineColor(Point p1, Point p2, Color color) {
+        return map.setLineColor(p1, p2, color);
+    }
+
     public boolean addLine(Line line) {
         map.addLine(line);
         repaint();
