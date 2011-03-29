@@ -44,7 +44,7 @@ public class GUI extends JFrame {
 
     public boolean addLine(Line line) {
         map.addLine(line);
-        repaint();
+
         return true;
     }
 

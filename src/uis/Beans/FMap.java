@@ -13,20 +13,15 @@ import java.awt.Color;
 
 
 
-public class FMap implements IMap {
+public class FMap extends Map implements IMap {
     private ArrayList<Line> lines = new ArrayList<Line>();
     private static FMap instance;
 
-    public static FMap getInstance() {
-        if (instance == null) {
-            instance = new FMap();
-        }
-        return instance;
 
-    }
 
 
     private FMap(){
+        super();
         addLine(new Line(new Point(0,0), new Point(1,0), Color.black));
         addLine(new Line(new Point(0,0), new Point(0,1), Color.black));
 
@@ -63,56 +58,5 @@ public class FMap implements IMap {
         addLine(new Line(new Point(1,4), new Point(2,4), Color.black));
 
     }
-
-    public ArrayList<Line> getLines(){
-        return lines;
-    }
-
-    public void addLine(Line l){
-        lines.add(l);
-
-    }
-
-    public void removeLine(Line l){
-        lines.remove(l);
-    }
-
-    //get a line with start/end point
-    public Line getLine(Point start, Point end){
-        for(Line l : lines){
-            if(l.getStartPoint().equals(start) && l.getEndPoint().equals(end)){
-                return l;
-            }
-        }
-        return null;
-    }
-
-    public boolean containsLine(Point start, Point end){
-        for(Line l : lines){
-            if(l.getStartPoint().equals(start) && l.getEndPoint().equals(end)){
-                return true;
-            }
-            else if (l.getStartPoint().equals(end) && l.getEndPoint().equals(start)) {
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    public boolean setLineColor(Point start, Point end, Color color){
-          Line temp = getLine(start, end);
-          if(temp != null){
-              temp.setLineColor(color);
-              return true;
-          }
-          return false;
-    }
-
-
-
-
-
-
 
 }

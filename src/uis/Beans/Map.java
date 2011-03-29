@@ -18,7 +18,7 @@ public class Map implements IMap {
     }
 
 
-    private Map(){
+    protected Map(){
 
     }
 
@@ -27,7 +27,9 @@ public class Map implements IMap {
     }
 
     public void addLine(Line l){
-        lines.add(l);
+        if(!containsLine(l.getStartPoint(), l.getEndPoint())) {
+            lines.add(l);
+        }
 
     }
 
@@ -51,6 +53,14 @@ public class Map implements IMap {
     }
 
     public boolean containsLine(Point start, Point end) {
+        for(Line l : lines){
+            if(l.getStartPoint().equals(start) && l.getEndPoint().equals(end)){
+                return true;
+            }
+            else if (l.getStartPoint().equals(end) && l.getEndPoint().equals(start)) {
+                return true;
+            }
+        }
         return false;
     }
 
