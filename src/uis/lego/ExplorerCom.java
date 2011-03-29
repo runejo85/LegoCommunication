@@ -1,5 +1,7 @@
 package uis.lego;
 
+import java.awt.*;
+
 public class ExplorerCom extends LegoCon implements ICommandConst, ILegoCon, IExplorerCom {
 
     public ExplorerCom(String name, String adress){
@@ -44,8 +46,8 @@ public class ExplorerCom extends LegoCon implements ICommandConst, ILegoCon, IEx
         return res;
     }
 
-    public String travel(int dist, boolean checkColor){
-        String colorAtStop = "";
+    public Color travel(int dist, boolean checkColor){
+        Color colorAtStop = Color.black;
         int ck = 0;
 
         if(checkColor){
@@ -64,16 +66,16 @@ public class ExplorerCom extends LegoCon implements ICommandConst, ILegoCon, IEx
          return true;
     }
 
-        private String getColor(int i) {
+        private Color getColor(int i) {
            switch(i) {
-           case 0: return "RECOVER";
-           case 1: return "BLACK";
-           case 2: return "BLUE";
-           case 3: return "GREEN";
-           case 4: return "YELLOW";
-           case 5: return "RED";
-           case 6: return "WHITE";
-           default: return  "WHITE";
+           case 0: return null;
+           case 1: return Color.black;
+           case 2: return Color.blue;
+           case 3: return Color.green;
+           case 4: return Color.yellow;
+           case 5: return Color.red;
+           case 6: return Color.white;
+           default: return  Color.white;
            }
     }
 

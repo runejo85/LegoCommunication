@@ -2,11 +2,8 @@ package uis.lego;
 
 import uis.Beans.FMap;
 import uis.Beans.IMap;
-import uis.Beans.Line;
 import uis.Beans.Point;
-import uis.JackGUI.GUI;
 
-import javax.swing.*;
 import java.awt.*;
 
 /**
@@ -16,7 +13,7 @@ import java.awt.*;
  * Time: 2:34 PM
  * To change this template use File | Settings | File Templates.
  */
-public class FExplorerCom implements IExplorerCom{
+public class FExplorerCom implements IExplorerCom {
     Point currentPos;
     int heading = 0;
     IMap fMap;
@@ -58,7 +55,7 @@ public class FExplorerCom implements IExplorerCom{
         return result;
     }
 
-    public String travel(int dist, boolean checkColor){
+    public Color travel(int dist, boolean checkColor){
 
         switch (heading) {
             case 0: currentPos = new Point(currentPos.getX(), currentPos.getY()+1); break;
@@ -67,14 +64,14 @@ public class FExplorerCom implements IExplorerCom{
             case 3: currentPos = new Point(currentPos.getX()-1, currentPos.getY()); break;
             default:System.out.println("FUUCKED IN TRAVLE");
         }
-        if(checkColor) return "yellow";
-        else return "black";
+        if(checkColor) return Color.yellow;
+        else return Color.black;
      }
 
     public boolean turn(int degrees){
 
             heading = (heading + (degrees / 90)) % 4;
-        return false;
+        return true;
     }
 
     public boolean disconnect() {
