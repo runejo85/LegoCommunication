@@ -13,15 +13,19 @@ import java.awt.Color;
 
 
 
-public class FMap extends Map implements IMap {
-    private ArrayList<Line> lines = new ArrayList<Line>();
+public class FMap extends Map implements IMap  {
+
     private static FMap instance;
 
+    public static FMap getInstance() {
+        if (instance == null) {
+            instance = new FMap();
+        }
+        return instance;
 
-
+    }
 
     private FMap(){
-        super();
         addLine(new Line(new Point(0,0), new Point(1,0), Color.black));
         addLine(new Line(new Point(0,0), new Point(0,1), Color.black));
 
@@ -58,5 +62,4 @@ public class FMap extends Map implements IMap {
         addLine(new Line(new Point(1,4), new Point(2,4), Color.black));
 
     }
-
 }

@@ -82,6 +82,15 @@ public class FExplorerCom implements IExplorerCom {
     public String getPos() {
         return ("X: " + currentPos.getX() + " Y: " + currentPos.getY());
     }
+
+    public static void main(String[] args) {
+        FExplorerCom fExplorerCom = new FExplorerCom("", "");
+        int[] gg = fExplorerCom.sweep();
+        for(int i : gg) {
+            System.out.println(i);
+        }
+
+    }
 }
 
 
