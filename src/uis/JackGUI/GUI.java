@@ -39,17 +39,24 @@ public class GUI extends JFrame {
     }
 
     public boolean setLineColor(Point p1, Point p2, Color color) {
-        return map.setLineColor(p1, p2, color);
+        boolean ret = map.setLineColor(p1, p2, color);
+        repaint();
+        return ret;
     }
 
     public boolean addLine(Line line) {
         map.addLine(line);
-
+        repaint();
         return true;
     }
 
     public IMap getMap() {
         return map;
+    }
+
+    public boolean updateRobotPos(Point point, String robotName) {
+        map.addRobot(robotName, point);
+        return true;
     }
 
 
@@ -60,21 +67,21 @@ public class GUI extends JFrame {
         gui.addLine(new Line(new Point(0,0), new Point(1,0), Color.black));
         gui.addLine(new Line(new Point(0,0), new Point(0,1), Color.black));
 
-        gui.addLine(new Line(new Point(1,0), new Point(1,1), Color.black));
-        gui.addLine(new Line(new Point(1,0), new Point(2,0), Color.black));
+        gui.addLine(new Line(new Point(1,0), new Point(1,1), Color.yellow));
+        gui.addLine(new Line(new Point(1,0), new Point(2,0), Color.red));
 
-        gui.addLine(new Line(new Point(2,0), new Point(2,1), Color.black));
+        gui.addLine(new Line(new Point(2,0), new Point(2,1), Color.yellow));
 
-        gui.addLine(new Line(new Point(0,1), new Point(1,1), Color.black));
+        gui.addLine(new Line(new Point(0,1), new Point(1,1), Color.yellow));
         gui.addLine(new Line(new Point(0,1), new Point(0,2), Color.black));
 
-        gui.addLine(new Line(new Point(1,1), new Point(1,2), Color.black));
+        gui.addLine(new Line(new Point(1,1), new Point(1,2), Color.red));
         gui.addLine(new Line(new Point(1,1), new Point(2,1), Color.black));
 
-        gui.addLine(new Line(new Point(2,1), new Point(2,2), Color.black));
+        gui.addLine(new Line(new Point(2,1), new Point(2,2), Color.blue));
 
         gui.addLine(new Line(new Point(0,2), new Point(1,2), Color.black));
-        gui.addLine(new Line(new Point(0,2), new Point(0,3), Color.black));
+        gui.addLine(new Line(new Point(0,2), new Point(0,3), Color.green));
 
         gui.addLine(new Line(new Point(1,2), new Point(2,2), Color.black));
         gui.addLine(new Line(new Point(1,2), new Point(1,3), Color.black));

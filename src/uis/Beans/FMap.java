@@ -15,9 +15,9 @@ import java.awt.Color;
 
 public class FMap extends Map implements IMap  {
 
-    private static FMap instance;
+    private static IMap instance;
 
-    public static FMap getInstance() {
+    public static IMap getInstance() {
         if (instance == null) {
             instance = new FMap();
         }

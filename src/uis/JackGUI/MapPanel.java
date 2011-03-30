@@ -19,7 +19,7 @@ public class MapPanel extends JPanel {
     private static MapPanel instance;
     private final int xConst = 600;
     private final int yConst = 600;
-    private Map myMap;
+    private IMap myMap;
 
     public static MapPanel getInstance() {
         if (instance == null) {
@@ -44,6 +44,7 @@ public class MapPanel extends JPanel {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         ArrayList<Line> tempLines = myMap.getLines();
+        ArrayList<Robot> tempRobots = myMap.getRobotPositions();
         double SCALING =  100;//1 / 5.0;
 
         //g.translate(600,400);
@@ -59,9 +60,17 @@ public class MapPanel extends JPanel {
                     (int) (p2.getX() * SCALING) + xConst, (int) (p2.getY() * SCALING) +yConst);
             m = new Point((int)(p1.getX() * SCALING + p2.getX() * SCALING)/ 2,(int) (p1.getY() * SCALING + p2.getY() * SCALING) / 2) ;
             g.setColor(mapLine.getLineColor());
-            g.fillOval((int)(m.getX() ) + xConst - 3, (int)(m.getY()) + yConst - 3, 6,6);
+            g.fillOval((m.getX() ) + xConst - 3, (m.getY()) + yConst - 3, 6,6);
+            g.setColor(Color.black);
+            g.drawOval((m.getX() ) + xConst - 3, (m.getY()) + yConst - 3, 6,6);
         }
 
+        for(Robot robot : tempRobots) {
+            g.setColor(Color.orange);
+            g.fillOval((robot.getPosition().getX() ) + xConst - 5, (robot.getPosition().getY()) + yConst - 5, 10,10);
+            g.setColor(Color.black);
+            g.drawOval((robot.getPosition().getX() ) + xConst - 5, (robot.getPosition().getY()) + yConst - 5, 10,10);
+        }
 
     }
 

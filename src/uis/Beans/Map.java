@@ -7,9 +7,10 @@ import java.awt.Color;
 
 public class Map implements IMap {
     protected ArrayList<Line> lines = new ArrayList<Line>();
+    protected ArrayList<Robot> robotPositions = new ArrayList<Robot>();
     protected static Map instance;
 
-    public static Map getInstance() {
+    public static IMap getInstance() {
         if (instance == null) {
             instance = new Map();
         }
@@ -21,6 +22,35 @@ public class Map implements IMap {
     protected Map(){
 
     }
+
+    public void updateRobotPos(String name, Point pos) {
+        for(Robot r : robotPositions) {
+            if(r.getRobotName().equals(name)) {
+                r.setPosition(pos);
+            }
+        }
+    }
+
+
+    public void addRobot(String name, Point pos) {
+        boolean found = false;
+        for(Robot r : robotPositions) {
+            if (r.getRobotName().equals(name)) {
+                updateRobotPos(name, pos);
+                found = true;
+                break;
+            }
+        }
+        if(!found) {
+            robotPositions.add(new Robot(name, pos));
+        }
+
+    }
+
+    public ArrayList<Robot> getRobotPositions() {
+        return robotPositions;
+    }
+
 
     public ArrayList<Line> getLines(){
         return lines;

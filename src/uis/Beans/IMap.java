@@ -18,5 +18,8 @@ public interface IMap {
     public Line getLine(Point start, Point end);
     public boolean containsLine(Point start, Point end);
     public boolean setLineColor(Point start, Point end, Color color);
+    public void addRobot(String name, Point pos);
+    public void updateRobotPos(String name, Point pos);
+    public ArrayList<Robot> getRobotPositions();
 
 }
