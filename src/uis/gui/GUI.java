@@ -1,7 +1,7 @@
-package uis.JackGUI;
+package uis.gui;
 
-import uis.Beans.*;
-import uis.Beans.Point;
+import uis.beans.*;
+import uis.beans.Point;
 
 import javax.swing.*;
 import java.awt.BorderLayout;
@@ -56,7 +56,12 @@ public class GUI extends JFrame {
 
     public boolean updateRobotPos(Point point, String robotName) {
         map.addRobot(robotName, point);
+        repaint();
         return true;
+    }
+
+    public Robot getRobot() {
+        return map.getRobotPositions().get(0);
     }
 
 

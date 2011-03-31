@@ -1,4 +1,4 @@
-package uis.JackGUI;
+package uis.gui;
 
 /**
  * Created by IntelliJ IDEA.

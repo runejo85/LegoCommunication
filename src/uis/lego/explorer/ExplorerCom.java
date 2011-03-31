@@ -1,4 +1,8 @@
-package uis.lego;
+package uis.lego.explorer;
+
+import uis.lego.ICommandConst;
+import uis.lego.ILegoCon;
+import uis.lego.LegoCon;
 
 import java.awt.*;
 

@@ -1,7 +1,7 @@
 package uis.lego;
 
 import java.awt.Color;
-import uis.Beans.Point;
+import uis.beans.Point;
 import java.lang.reflect.Field;
 
 /**

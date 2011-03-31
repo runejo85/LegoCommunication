@@ -1,14 +1,6 @@
 package uis.lego;
 
-/**
- * Created by IntelliJ IDEA.
- * User: Rune
- * Date: 25.01.11
- * Time: 15:15
- * To change this template use File | Settings | File Templates.
- */
 public interface ICommandConst {
-
         final int COMMAND_BATTERY_VOLTAGE = 0;
         final int COMMAND_TRAVEL = 1;
         final int COMMAND_TURN = 2;
@@ -16,7 +8,6 @@ public interface ICommandConst {
         final int COMMAND_DISCONNECT = 4;
         final int COMMAND_SWEEP = 5;
         final int COMMAND_READ_VALUE = 6;
-
 }
 
 /*

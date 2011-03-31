@@ -1,4 +1,4 @@
-package uis.lego;
+package uis.lego.explorer;
 
 
 
