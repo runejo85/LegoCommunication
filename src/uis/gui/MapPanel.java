@@ -45,7 +45,7 @@ public class MapPanel extends JPanel {
         super.paintComponent(g);
         ArrayList<Line> tempLines = myMap.getLines();
         ArrayList<Robot> tempRobots = myMap.getRobotPositions();
-        int SCALING =  100;//1 / 5.0;
+        int SCALING =  100;
         Point p1, p2;
 
         //g.translate(600,400);

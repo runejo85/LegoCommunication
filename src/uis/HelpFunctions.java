@@ -1,16 +1,9 @@
-package uis.lego;
+package uis;
 
 import java.awt.Color;
 import uis.beans.Point;
 import java.lang.reflect.Field;
 
-/**
- * Created by IntelliJ IDEA.
- * User: eirik
- * Date: 3/29/11
- * Time: 3:19 PM
- * To change this template use File | Settings | File Templates.
- */
 public class HelpFunctions {
 
     public static String getColor(Color c) {

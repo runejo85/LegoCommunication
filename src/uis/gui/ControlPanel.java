@@ -78,14 +78,11 @@ public class ControlPanel extends JPanel implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equals("Initialize Connections")) {
             explorerCtrl.btConnect();
-            System.out.println("Initialize Connections");
         }
         else if (e.getActionCommand().equals("Disconnect")) {
             explorerCtrl.btDisconnect();
-            System.out.println("Disconnect");
         }
         else if (e.getActionCommand().equals("Start")) {
-            System.out.println("Start");
             explorerCtrl.start ();
         }
         else if (e.getActionCommand().equals("Pause")) {
