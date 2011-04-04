@@ -67,12 +67,6 @@ public class HelpFunctions {
         return a + b;
     }
 
-    /*
-     array = findTarget((0,0), (0,1) endPos, 0);
-     if(array
-
-
-     */
     static IMap map = FMap.getInstance();
 
     public static Line[] findTarget(Point currPos, Point endPos, int moves) {
@@ -81,27 +75,26 @@ public class HelpFunctions {
         Point newPointY = nextPointY(currPos, endPos);
         Line[] lines;
         if (newPointY.equals(endPos)) {
-            lines = new Line[moves+1];
+            lines = new Line[moves + 1];
             lines[moves] = new Line(currPos, newPointY, Color.black);
             return lines;
         } else if (newPointX.equals(endPos)) {
-            lines = new Line[moves+1];
+            lines = new Line[moves + 1];
             lines[moves] = new Line(currPos, newPointX, Color.black);
             return lines;
         }
-
         if (map.containsLine(currPos, newPointX)) {
 
             lines = findTarget(newPointX, endPos, ++moves);
             if (lines != null) {
-                lines[moves-1] = new Line(currPos, newPointX, Color.black);
+                lines[moves - 1] = new Line(currPos, newPointX, Color.black);
                 return lines;
             }
         } else if (map.containsLine(currPos, newPointY)) {
 
             lines = findTarget(newPointY, endPos, ++moves);
             if (lines != null) {
-                lines[moves-1] = new Line(currPos, newPointY, Color.black);
+                lines[moves - 1] = new Line(currPos, newPointY, Color.black);
                 return lines;
             }
 
@@ -109,16 +102,20 @@ public class HelpFunctions {
         return null;
     }
 
-    private static Point nextPointX(Point currPos, Point endPoint) {
-        if (currPos.getX() > endPoint.getX()) {
+    public static Point nextPointX(Point currPos, Point endPoint) {
+        if (currPos.getX() == endPoint.getX()) {
+            return currPos;
+        } else if (currPos.getX() > endPoint.getX()) {
             return new Point(currPos.getX() - 1, currPos.getY());
         } else {
             return new Point(currPos.getX() + 1, currPos.getY());
         }
     }
 
-    private static Point nextPointY(Point currPos, Point endPoint) {
-        if (currPos.getY() > endPoint.getY()) {
+    public static Point nextPointY(Point currPos, Point endPoint) {
+        if (currPos.getY() == endPoint.getY()) {
+            return currPos;
+        } else if (currPos.getY() > endPoint.getY()) {
             return new Point(currPos.getX(), currPos.getY() - 1);
         } else {
             return new Point(currPos.getX(), currPos.getY() + 1);
@@ -129,7 +126,7 @@ public class HelpFunctions {
         Point startPoint = new Point(2, 4);
         Point endPoint = new Point(1, 1);
         Line[] lines = findTarget(startPoint, endPoint, 0);
-        for(Line l : lines) {
+        for (Line l : lines) {
             System.out.println(l);
         }
     }
