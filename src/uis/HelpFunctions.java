@@ -2,10 +2,7 @@ package uis;
 
 import java.awt.Color;
 
-import uis.beans.FMap;
-import uis.beans.IMap;
-import uis.beans.Line;
-import uis.beans.Point;
+import uis.beans.*;
 
 import java.lang.reflect.Field;
 
@@ -69,33 +66,34 @@ public class HelpFunctions {
 
     static IMap map = FMap.getInstance();
 
-    public static Line[] findTarget(Point currPos, Point endPos, int moves) {
 
+    public static Point[] findTarget(Point currPos, Point endPos, int moves) {
+        Grid grid = Grid.getInstance();
         Point newPointX = nextPointX(currPos, endPos);
         Point newPointY = nextPointY(currPos, endPos);
-        Line[] lines;
+        Point[] points;
         if (newPointY.equals(endPos)) {
-            lines = new Line[moves + 1];
-            lines[moves] = new Line(currPos, newPointY, Color.black);
-            return lines;
+            points = new Point[moves + 1];
+            points[moves] = newPointY;
+            return points;
         } else if (newPointX.equals(endPos)) {
-            lines = new Line[moves + 1];
-            lines[moves] = new Line(currPos, newPointX, Color.black);
-            return lines;
+            points = new Point[moves + 1];
+            points[moves] =newPointX;
+            return points;
         }
-        if (map.containsLine(currPos, newPointX)) {
+        if (grid.containsLine(currPos.getX(), currPos.getY(), newPointX.getX(), newPointX.getY())) {
 
-            lines = findTarget(newPointX, endPos, ++moves);
-            if (lines != null) {
-                lines[moves - 1] = new Line(currPos, newPointX, Color.black);
-                return lines;
+            points = findTarget(newPointX, endPos, ++moves);
+            if (points != null) {
+                points[moves - 1] =newPointX;
+                return points;
             }
-        } else if (map.containsLine(currPos, newPointY)) {
+        } else if (grid.containsLine(currPos.getX(), currPos.getY(), newPointY.getX(), newPointY.getY())) {
 
-            lines = findTarget(newPointY, endPos, ++moves);
-            if (lines != null) {
-                lines[moves - 1] = new Line(currPos, newPointY, Color.black);
-                return lines;
+            points = findTarget(newPointY, endPos, ++moves);
+            if (points != null) {
+                points[moves - 1] = newPointY;
+                return points;
             }
 
         }
@@ -122,11 +120,61 @@ public class HelpFunctions {
         }
     }
 
+    public int getRotation(Point currPoint, Point nextPoint, int heading) {
+        int rotation = -1;
+        if(currPoint.getX() < nextPoint.getX()) {
+            rotation = Math.abs(heading - 0);
+        } else if(currPoint.getX() > nextPoint.getX()) {
+            rotation = Math.abs(heading - 1);
+        } else if(currPoint.getY() < nextPoint.getY()) {
+            rotation = Math.abs(heading - 2);
+        }  else if(currPoint.getY() > nextPoint.getY()) {
+            rotation = Math.abs(heading - 3);
+        }
+
+        return rotation;
+    }
+
     public static void main(String[] args) {
-        Point startPoint = new Point(2, 4);
-        Point endPoint = new Point(1, 1);
-        Line[] lines = findTarget(startPoint, endPoint, 0);
-        for (Line l : lines) {
+        Grid grid = Grid.getInstance();
+        grid.add(0,0,1,0);
+        grid.add(0,0,0,1);
+
+        grid.add(1,0,1,1);
+        grid.add(1,0,2,0);
+
+        grid.add(2,0,2,1);
+
+        grid.add(0,1,1,1);
+        grid.add(0,1,0,2);
+
+        grid.add(1,1,1,2);
+        grid.add(1,1,2,1);
+
+        grid.add(2,1,2,2);
+
+        grid.add(0,2,1,2);
+        grid.add(0,2,0,3);
+
+        grid.add(1,2,2,2);
+        grid.add(1,2,1,3);
+
+        grid.add(2,2,2,3);
+
+        grid.add(0,3,0,4);
+        grid.add(0,3,1,3);
+
+        grid.add(1,3,1,4);
+        grid.add(1,3,2,3);
+
+        grid.add(2,3,2,4);
+
+        grid.add(0,4,1,4);
+        grid.add(1,4,2,4);
+        Point startPoint = new Point(2, 3);
+        Point endPoint = new Point(0, 0);
+        Point[] lines = findTarget(startPoint, endPoint, 0);
+        for (Point l : lines) {
             System.out.println(l);
         }
     }

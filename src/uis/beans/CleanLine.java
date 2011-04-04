@@ -45,6 +45,6 @@ public class CleanLine implements Serializable {
     }
 
     public String toString() {
-        return ("sP = " + startPoint + ", eP = " + endPoint);
+        return (" sP = " + startPoint + ", eP = " + endPoint);
     }
 }
