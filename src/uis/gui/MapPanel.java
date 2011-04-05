@@ -68,7 +68,11 @@ public class MapPanel extends JPanel {
 
         for(Robot robot : tempRobots) {
             p1 = robot.getPosition().reverse();
-            g.setColor(Color.orange);
+            if(robot.getRobotName().equals("explorer2011")) {
+                g.setColor(Color.orange);
+            } else if (robot.getRobotName().equals("collector2011")) {
+                g.setColor(Color.pink);
+            }
             g.fillOval((p1.getX() * SCALING ) + xConst - 5, (p1.getY() * SCALING) + yConst - 5, 10,10);
             g.setColor(Color.black);
             g.drawOval((p1.getX() * SCALING ) + xConst - 5, (p1.getY() * SCALING) + yConst - 5, 10,10);

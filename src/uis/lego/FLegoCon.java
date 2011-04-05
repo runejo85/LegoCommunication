@@ -6,17 +6,17 @@ import java.awt.Color;
 public class FLegoCon {
     protected int heading;
     protected Point currentPos;
+    IMap map;
 
     public FLegoCon(String name, String address, Point currentPos) {
         heading = 0;
         this.currentPos = currentPos;
+        map = FMap.getInstance();
     }
 
     public Color travel(int dist, boolean checkColor) {
-        Color c = Color.yellow;
+        Color c;
         Point oldPos = currentPos;
-
-
         switch (heading) {
             case 0:
                 currentPos = new Point(currentPos.getX(), currentPos.getY() + 1);
@@ -33,14 +33,11 @@ public class FLegoCon {
             default:
                 System.out.println("Heading error in FExploreCom " + heading);
         }
-        Line l = new Line(oldPos, currentPos, Color.black);
-        if (l.equals(new Line(new Point(0, 3), new Point(1, 3), Color.black)) ||
-                (l.equals(new Line(new Point(2, 0), new Point(2, 1), Color.black)))) {
-            c = Color.green;
-        }
+        Line l = map.getLine(oldPos, currentPos);
+        c = l.getLineColor();
         if (checkColor) {
             return c;
-        } else return Color.white;
+        } else return null;
     }
 
     public boolean turn(int degrees) {
