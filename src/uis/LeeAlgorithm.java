@@ -27,8 +27,9 @@ public class LeeAlgorithm {
         List<Point> neighbourList = getNeighbours(endPoint, weight);
         for (Point p : neighbourList) {
             if(pointGrid.getWeight(p) == weight -1) {
+
+                points[weight-1] = endPoint;
                 endPoint = p;
-                points[weight-1] = p;
                 getShortestPath(endPoint, points);
                 return;
             }
@@ -40,10 +41,56 @@ public class LeeAlgorithm {
     public static Point[] getShortestPath(Point startPoint, Point endPoint) {
         pointGrid.setWeight(startPoint, 0);
         weightGrid(startPoint, endPoint, 0);
-        Point[] points = new Point[pointGrid.getWeight(endPoint) + 1];
+        Point[] points = new Point[pointGrid.getWeight(endPoint)];
         getShortestPath(endPoint, points);
-        points[points.length-1] = endPoint;
+        pointGrid.resetWeight();
         return points;
+    }
+
+    public static Point[] getShortestPath(Point startPoint, Point endPoint, Point unavailable) {
+         if(endPoint.equals(unavailable)) {
+            return alternativeRoute(startPoint, endPoint);
+
+        }else if(unavailable != null) {
+            pointGrid.setWeight(unavailable, -20);
+        }
+        pointGrid.setWeight(startPoint, 0);
+        weightGrid(startPoint, endPoint, 0);
+        Point[] points = new Point[pointGrid.getWeight(endPoint)];
+        getShortestPath(endPoint, points);
+        pointGrid.resetWeight();
+        return points;
+    }
+
+    public static Point[] alternativeRoute(Point sP, Point eP) {
+        Point[] route = null, route2 = null;
+        if(sP.getY() == sP.getY()) {
+            if(pointGrid.contains(new Point(eP.getX(), eP.getY()+10))) {
+                route = getShortestPath(sP,new Point(eP.getX(), eP.getY()+10), eP);
+            } else if(pointGrid.contains(new Point(eP.getX(), eP.getY()-10))) {
+                route = getShortestPath(sP,new Point(eP.getX(), eP.getY()-10), eP);
+            } else {
+                System.err.println("no route found, fuckup");
+                return null;
+            }
+        } else if (sP.getX() == sP.getX()) {
+            if(pointGrid.contains(new Point(eP.getX() + 10, eP.getY()))) {
+                route = getShortestPath(sP,new Point(eP.getX() + 10, eP.getY()), eP);
+            } else if(pointGrid.contains(new Point(eP.getX() - 10, eP.getY()))) {
+                route = getShortestPath(sP,new Point(eP.getX() - 10, eP.getY()), eP);
+            } else {
+                System.err.println("no route found, fuckup");
+                return null;
+            }
+
+        }
+        route2 = new Point[route.length + 1];
+            for(int i = 0; i < route.length; i++) {
+                route2[i] = route[i];
+            }
+            route2[route2.length-1] = eP;
+
+        return route2;
     }
 
     private static List<Point> getNeighbours(Point p, int weight) {
@@ -59,10 +106,10 @@ public class LeeAlgorithm {
 
     private  static Point[] getN(Point p) {
         Point[] points = new Point[4];
-        points[0] = new Point(p.getX() - 1, p.getY());
-        points[1] = new Point(p.getX() + 1, p.getY());
-        points[2] = new Point(p.getX(), p.getY() + 1);
-        points[3] = new Point(p.getX(), p.getY() - 1);
+        points[0] = new Point(p.getX() - 10, p.getY());
+        points[1] = new Point(p.getX() + 10, p.getY());
+        points[2] = new Point(p.getX(), p.getY() + 10);
+        points[3] = new Point(p.getX(), p.getY() - 10);
         return points;
     }
 

@@ -3,10 +3,11 @@ package uis;
 import java.awt.Color;
 
 import uis.beans.*;
+import uis.lego.ICommandConst;
 
 import java.lang.reflect.Field;
 
-public class HelpFunctions {
+public class HelpFunctions implements ICommandConst {
 
     public static String getColor(Color c) {
         if (c.equals(Color.red)) {
@@ -97,5 +98,47 @@ public class HelpFunctions {
         }
 
         return rotation;
+    }
+
+    public static Point getOppositeEndOfLine(Point currPos, Line l) {
+        if(currPos.equals(l.getStartPoint()))
+            return l.getEndPoint();
+        else
+            return l.getStartPoint();
+
+    }
+
+    public static Point getNewPos(int heading, int length, Point currentPos) {
+        Point newPos = null;
+        if (heading == 0) {
+            newPos = (new Point((currentPos.getX()), currentPos.getY() + length));
+        } else if (heading == 1) {
+            newPos = (new Point((currentPos.getX() + length), currentPos.getY()));
+
+        } else if (heading == 2) {
+            newPos = (new Point((currentPos.getX()), currentPos.getY() - length));
+
+        } else if (heading == 3) {
+            newPos = (new Point((currentPos.getX() - length), currentPos.getY()));
+        }
+        return newPos;
+    }
+
+    public static Point getSorterPos(Line line, int heading) {
+        Point m = line.getMedian();
+        switch(heading) {
+            case NORTH:
+                m.setX(m.getX()-5);
+                break;
+
+            case SOUTH:
+                m.setX(m.getX()-5);
+                break;
+            case WEST: break;
+            case EAST: break;
+
+        }
+
+        return null;
     }
 }

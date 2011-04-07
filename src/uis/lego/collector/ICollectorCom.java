@@ -18,4 +18,6 @@ public interface ICollectorCom {
 
     public boolean release();
 
+    int sweep();
+
 }

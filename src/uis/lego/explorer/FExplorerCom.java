@@ -4,11 +4,10 @@ import uis.beans.*;
 import uis.lego.FLegoCon;
 
 public class FExplorerCom extends FLegoCon implements IExplorerCom {
-    IMap fMap;
 
     public FExplorerCom(String name, String address) {
         super(name, address, new Point(0,0));
-        fMap = FMap.getInstance();
+
     }
 
     public int[] sweep() {
@@ -21,16 +20,16 @@ public class FExplorerCom extends FLegoCon implements IExplorerCom {
             default: hlp = 1;
         }
         int[] result = new int[4];
-        if (fMap.containsLine(currentPos, new Point(currentPos.getX(), currentPos.getY() + 1))) {
+        if (map.containsLine(currentPos, new Point(currentPos.getX(), currentPos.getY() + 10))) {
             result[(hlp) % 4] = 1;
         }
-        if (fMap.containsLine(currentPos, new Point(currentPos.getX() + 1, currentPos.getY()))) {
+        if (map.containsLine(currentPos, new Point(currentPos.getX() + 10, currentPos.getY()))) {
             result[(1 + hlp) % 4] = 1;
         }
-        if (fMap.containsLine(currentPos, new Point(currentPos.getX(), currentPos.getY() - 1))) {
+        if (map.containsLine(currentPos, new Point(currentPos.getX(), currentPos.getY() - 10))) {
             result[(2 + hlp) % 4] = 1;
         }
-        if (fMap.containsLine(currentPos, new Point(currentPos.getX() - 1, currentPos.getY()))) {
+        if (map.containsLine(currentPos, new Point(currentPos.getX() - 10, currentPos.getY()))) {
             result[(3 + hlp) % 4] = 1;
         }
 

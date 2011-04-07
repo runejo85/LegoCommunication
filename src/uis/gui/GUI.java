@@ -22,15 +22,15 @@ public class GUI extends JFrame {
     }
 
     private GUI(RobotControl rc) {
-        setSize(1500, 800);
-        initGUI(rc);
+        setSize(1200, 800);
         map = Map.getInstance();
+        initGUI(rc);
     }
 
     private void initGUI(RobotControl rc) {
         setLayout(new BorderLayout());
         ControlPanel controlPanel = ControlPanel.getInstance(rc);
-        MapPanel mapPanel = MapPanel.getInstance();
+        MapPanel mapPanel = MapPanel.getInstance(map);
         add(controlPanel, BorderLayout.WEST);
         add(mapPanel, BorderLayout.CENTER);
         setTitle("Map gather l33t v1.322");
@@ -54,8 +54,13 @@ public class GUI extends JFrame {
         return map;
     }
 
-    public boolean updateRobotPos(Point point, String robotName) {
-        map.addRobot(robotName, point);
+    public void setMap(IMap map) {
+        this.map = map;
+        MapPanel.getInstance(null).setMap(map);
+    }
+
+    public boolean updateRobotPos(Point point, String robotName, int heading) {
+        map.addRobot(robotName, point, heading);
         repaint();
         return true;
     }
@@ -69,40 +74,41 @@ public class GUI extends JFrame {
     public static void main(String[] args) {
 
         GUI gui = new GUI(null);
-        gui.addLine(new Line(new Point(0,0), new Point(1,0), Color.black));
-        gui.addLine(new Line(new Point(0,0), new Point(0,1), Color.black));
-
-        gui.addLine(new Line(new Point(1,0), new Point(1,1), Color.yellow));
-        gui.addLine(new Line(new Point(1,0), new Point(2,0), Color.red));
-
-        gui.addLine(new Line(new Point(2,0), new Point(2,1), Color.yellow));
-
-        gui.addLine(new Line(new Point(0,1), new Point(1,1), Color.yellow));
-        gui.addLine(new Line(new Point(0,1), new Point(0,2), Color.black));
-
-        gui.addLine(new Line(new Point(1,1), new Point(1,2), Color.red));
-        gui.addLine(new Line(new Point(1,1), new Point(2,1), Color.black));
-
-        gui.addLine(new Line(new Point(2,1), new Point(2,2), Color.blue));
-
-        gui.addLine(new Line(new Point(0,2), new Point(1,2), Color.black));
-        gui.addLine(new Line(new Point(0,2), new Point(0,3), Color.green));
-
-        gui.addLine(new Line(new Point(1,2), new Point(2,2), Color.black));
-        gui.addLine(new Line(new Point(1,2), new Point(1,3), Color.black));
-
-        gui.addLine(new Line(new Point(2,2), new Point(2,3), Color.black));
-
-        gui.addLine(new Line(new Point(0,3), new Point(0,4), Color.black));
-        gui.addLine(new Line(new Point(0,3), new Point(1,3), Color.black));
-
-        gui.addLine(new Line(new Point(1,3), new Point(1,4), Color.black));
-        gui.addLine(new Line(new Point(1,3), new Point(2,3), Color.black));
-
-        gui.addLine(new Line(new Point(2,3), new Point(2,4), Color.black));
-
-        gui.addLine(new Line(new Point(0,4), new Point(1,4), Color.black));
-        gui.addLine(new Line(new Point(1,4), new Point(2,4), Color.black));
+        gui.setMap(FMap.getInstance());
+        gui.repaint();
+//        gui.addLine(new Line(new Point(0,0), new Point(0,10), Color.black));
+//
+//        gui.addLine(new Line(new Point(10,0), new Point(10,10), Color.yellow));
+//        gui.addLine(new Line(new Point(10,0), new Point(20,0), Color.red));
+//
+//        gui.addLine(new Line(new Point(20,0), new Point(20,10), Color.yellow));
+//
+//        gui.addLine(new Line(new Point(0,10), new Point(10,10), Color.yellow));
+//        gui.addLine(new Line(new Point(0,10), new Point(0,20), Color.black));
+//
+//        gui.addLine(new Line(new Point(10,10), new Point(10,20), Color.red));
+//        gui.addLine(new Line(new Point(10,10), new Point(20,10), Color.black));
+//
+//        gui.addLine(new Line(new Point(20,10), new Point(20,20), Color.blue));
+//
+//        gui.addLine(new Line(new Point(0,20), new Point(10,20), Color.black));
+//        gui.addLine(new Line(new Point(0,20), new Point(0,30), Color.green));
+//
+//        gui.addLine(new Line(new Point(10,20), new Point(20,20), Color.green));
+//        gui.addLine(new Line(new Point(10,20), new Point(10,30), Color.black));
+//
+//        gui.addLine(new Line(new Point(20,20), new Point(20,30), Color.black));
+//
+//        gui.addLine(new Line(new Point(0,30), new Point(0,40), Color.black));
+//        gui.addLine(new Line(new Point(0,30), new Point(10,30), Color.black));
+//
+//        gui.addLine(new Line(new Point(10,30), new Point(10,40), Color.black));
+//        gui.addLine(new Line(new Point(10,30), new Point(20,30), Color.black));
+//
+//        gui.addLine(new Line(new Point(20,30), new Point(20,40), Color.green));
+//
+//        gui.addLine(new Line(new Point(0,40), new Point(10,40), Color.black));
+//        gui.addLine(new Line(new Point(10,40), new Point(20,40), Color.black));
 
         gui.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         gui.setVisible(true);

@@ -1,12 +1,14 @@
 package uis.lego;
 
 import uis.beans.*;
+import uis.lego.collector.FCollectorCom;
+
 import java.awt.Color;
 
-public class FLegoCon {
+public class FLegoCon implements ICommandConst {
     protected int heading;
     protected Point currentPos;
-    IMap map;
+    protected IMap map;
 
     public FLegoCon(String name, String address, Point currentPos) {
         heading = 0;
@@ -18,33 +20,31 @@ public class FLegoCon {
         Color c;
         Point oldPos = currentPos;
         switch (heading) {
-            case 0:
-                currentPos = new Point(currentPos.getX(), currentPos.getY() + 1);
+            case NORTH:
+                currentPos = new Point(currentPos.getX(), currentPos.getY() + dist / 50);
                 break;
-            case 1:
-                currentPos = new Point(currentPos.getX() + 1, currentPos.getY());
+            case EAST:
+                currentPos = new Point(currentPos.getX() + dist / 50, currentPos.getY());
                 break;
-            case 2:
-                currentPos = new Point(currentPos.getX(), currentPos.getY() - 1);
+            case SOUTH:
+                currentPos = new Point(currentPos.getX(), currentPos.getY() - dist / 50);
                 break;
-            case 3:
-                currentPos = new Point(currentPos.getX() - 1, currentPos.getY());
+            case WEST:
+                currentPos = new Point(currentPos.getX() - dist / 50, currentPos.getY());
                 break;
             default:
-                System.out.println("Heading error in FExploreCom " + heading);
+                System.out.println("Heading error in FLegoCon " + heading);
         }
-        Line l = map.getLine(oldPos, currentPos);
-        c = l.getLineColor();
         if (checkColor) {
+            Line l = map.getLine(oldPos, currentPos);
+            c = l.getLineColor();
             return c;
         } else return null;
     }
 
     public boolean turn(int degrees) {
         int a = degrees / 90;
-        if (a == -1) {
-            a = 3;
-        }
+        a = (a + 4) % 4;
         heading = (heading + a) % 4;
         return true;
     }
