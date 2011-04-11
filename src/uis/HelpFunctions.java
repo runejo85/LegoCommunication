@@ -52,11 +52,26 @@ public class HelpFunctions implements ICommandConst {
         return points;
     }
 
-    public static Point getClosestPoint(Point currPos, Point p1, Point p2) {
+    public static Point getClosestPoint(Point currPos, Point p1, Point p2, Point declined) {
+        if(declined != null) {
+            if (declined.equals(p2)) {
+                return p1;
+            } else if(declined.equals(p1))  {
+                return p2;
+            }
+        }
         int a = Math.abs(currPos.getX() - p1.getX()) + Math.abs(currPos.getY() - p1.getY());
         int b = Math.abs(currPos.getX() - p2.getX()) + Math.abs(currPos.getY() - p2.getY());
         if (a < b) return p1;
         else return p2;
+    }
+
+    public static Point getClosestPoint(Line closestLine, Line endLine, Point robotPos) {
+        Point a = getClosestPoint(robotPos, endLine.getStartPoint(), endLine.getEndPoint(), null);
+        Point b = getClosestPoint(a, closestLine.getStartPoint(), closestLine.getEndPoint(), null);
+        return b;
+
+
     }
 
     public static int numberOfMoves(Point startPoint, Point endPoint) {
@@ -108,6 +123,8 @@ public class HelpFunctions implements ICommandConst {
 
     }
 
+
+
     public static Point getNewPos(int heading, int length, Point currentPos) {
         Point newPos = null;
         if (heading == 0) {
@@ -128,17 +145,19 @@ public class HelpFunctions implements ICommandConst {
         Point m = line.getMedian();
         switch(heading) {
             case NORTH:
-                m.setX(m.getX()-5);
+                m.setY(m.getY() + 5);
                 break;
-
             case SOUTH:
-                m.setX(m.getX()-5);
+                m.setY(m.getY() - 5);
                 break;
-            case WEST: break;
-            case EAST: break;
-
+            case WEST:
+                m.setX(m.getX() + 5);
+                break;
+            case EAST:
+                m.setX(m.getX() - 5);
+                break;
         }
-
-        return null;
+        System.out.println(m + " from getSorterPos and heading is " + heading);
+        return m;
     }
 }

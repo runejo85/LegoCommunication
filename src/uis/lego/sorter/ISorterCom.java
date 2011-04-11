@@ -1,11 +1,12 @@
 package uis.lego.sorter;
 
-/**
- * Created by IntelliJ IDEA.
- * User: eirik
- * Date: 3/31/11
- * Time: 11:29 AM
- * To change this template use File | Settings | File Templates.
- */
+import java.awt.*;
+
 public interface ISorterCom {
+
+    public boolean moveToTray(int tray);
+    public boolean turnToInitPos();
+    public boolean release();
+    public boolean grab();
+    public Color checkColor();
 }

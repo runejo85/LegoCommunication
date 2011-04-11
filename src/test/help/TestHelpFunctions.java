@@ -35,9 +35,9 @@ public class TestHelpFunctions {
 
     @Test
     public void testSomething() {
-        Point p = HelpFunctions.getClosestPoint(currPos, p1, p2);
+        Point p = HelpFunctions.getClosestPoint(currPos, p1, p2, null);
         assertEquals(p2, p);
-        p = HelpFunctions.getClosestPoint(currPos, p3, p1);
+        p = HelpFunctions.getClosestPoint(currPos, p3, p1, null);
         assertEquals(p1, p);
     }
 

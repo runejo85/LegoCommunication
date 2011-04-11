@@ -1,6 +1,7 @@
 package uis.lego;
 
 import uis.beans.*;
+import uis.lego.collector.CollectorCom;
 import uis.lego.collector.FCollectorCom;
 
 import java.awt.Color;
@@ -43,9 +44,12 @@ public class FLegoCon implements ICommandConst {
     }
 
     public boolean turn(int degrees) {
+
         int a = degrees / 90;
         a = (a + 4) % 4;
         heading = (heading + a) % 4;
+        if(this instanceof FCollectorCom)
+        System.out.println("ROBOT IS TURNING, HEAING IS" + heading);
         return true;
     }
 
